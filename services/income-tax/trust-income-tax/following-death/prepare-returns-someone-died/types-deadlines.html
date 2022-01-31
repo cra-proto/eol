@@ -90,6 +90,54 @@
                   <li><a href="#h-4">Returns for residents of Quebec</a></li>
                </ul>
 
+               <section class="">
+                  <h2>Find out your filing due date</h2>
+
+                  <div class="wb-frmvld">
+                     <form method="get" class="panel panel-default mrgn-bttm-lg"> <!--id="cews-cal"-->
+                        <fieldset class="">
+                           <legend class="panel-heading mrgn-bttm-0">Type of return</legend>
+                           <div class="panel-body">
+                              <div class="form-group">
+                                 <!-- <legend><span class="wb-inv">Step 1: </span>Claim period</legend> -->
+                                 <label for="return-type" class="control-label required"><span class="field-name">Select the type of return you are going to file</span> <strong class="required">(required)</strong></label>
+                                 <select required id="return-type" class="form-control input-lg">
+                                    <!-- <option value=""> Select a type of return</option> -->
+                                    <option value="70(1)">Final personal income tax return</option>
+                                    <option value="70(2)">Optional return: rights or things</option>
+                                    <option value="150(4)">Optional return: partner or proprietor</option>
+                                    <option value="104(23)(d)">Optional return: graduated rate estate</option>
+                                    <option value="T3">T3 trust income tax return</option>
+                                 </select>
+                              </div>
+                              <div id="death-date-question" class="form-group">
+                                 <label for="date-death">Date of death<span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
+                                 <div class="">
+                                   <input class="form-control" type="date" id="date-death" name="date-death"/>
+                                 </div>
+                              </div>
+                              <div id="business-question" class="checkbox">
+                                 <label for="run-business">
+                                   <input id="run-business" type="checkbox" value="">Deceased or deceased's spouse or common-law partner ran a business on the date of death</label>
+                              </div>
+                              <div id="assessment-date-question" class="form-group hidden">
+                                 <label for="assessment-death">Date the Notice of Assessment or Reassessment was issued<span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
+                                 <div class="">
+                                   <input class="form-control" type="date" id="assessment-date" name="assessment-date"/>
+                                 </div>
+                              </div>
+                              <div class="well">
+                                 <h3 class="mrgn-tp-0">Deadline for your selection</h3>
+                                 <p>Based on the information you entered, the <strong><span class="return-name">Final personal income tax return</span></strong> must be filed by <span class="due-date h4 mrgn-tp-0">(answer questions above)</span></p>
+                              </div>
+                           </div>
+                        </fieldset>
+                     </form>
+                  </div>
+
+                  
+
+
                <h2 id="h-1">Final personal income tax return</h2>
                <p><strong>Who should file:</strong> Everyone must file a final personal tax return. This is similar to your yearly income tax return but has some differences depending on the assets of the person who died.</p>
                <p><strong>Deadline</strong>:</strong></p>
@@ -175,24 +223,128 @@
          <script src="https://test.canada.ca/covid-19-guidance/proto/js/alpha-banner.js"></script>
          <script>
             (function( $, document, wb ) {
-            "use strict";
-            $('.data-ajax').on( "wb-contentupdated", function( event, data ){
-            // "data.ajax-type" contains the insersion method [after, append, before, prepend, replace]
-            // "data.content" contains the
-            var $elm = $(event.currentTarget);
-            $elm
-            	.find( wb.allSelectors )
-            		.addClass( "wb-init" )
-            		.filter( ":not(#" + $elm.attr( "id" ) + " .wb-init .wb-init)" )
-            			.trigger( "timerpoke.wb" );
-            /*
-             * Since we are working with events we want to ensure that we are being
-             * passive about our control, so returning true allows for events to always
-             * continue
-             */
-            return true;
-            });
+               "use strict";
+               var $document = wb.doc;
+               $('.data-ajax').on( "wb-contentupdated", function( event, data ){
+                  // "data.ajax-type" contains the insersion method [after, append, before, prepend, replace]
+                  // "data.content" contains the
+                  var $elm = $(event.currentTarget);
+                  $elm
+                     .find( wb.allSelectors )
+                        .addClass( "wb-init" )
+                        .filter( ":not(#" + $elm.attr( "id" ) + " .wb-init .wb-init)" )
+                           .trigger( "timerpoke.wb" );
+                  /*
+                  * Since we are working with events we want to ensure that we are being
+                  * passive about our control, so returning true allows for events to always
+                  * continue
+                  */
+                  return true;
+               });
+
+               $document.on("change", "#return-type", function () { //hide or show fields
+                  var returnType = $(this).find('option:selected').val(),
+                  returnTypeName = $(this).find('option:selected').text();
+                  $("#death-date-question").addClass("hidden");
+                  $("#business-question").addClass("hidden");
+                  $("#assessment-date-question").addClass("hidden");
+                  $("#distribution-date-question").addClass("hidden");
+                  $(".return-name").text(returnTypeName);
+                  if (returnType == "70(1)" || returnType == "150(4)" || returnType == "104(23)(d)") { //T1
+                     $("#death-date-question").removeClass("hidden");
+                     $("#business-question").removeClass("hidden");
+                     
+                  } else if (returnType == "70(2)") { //rights or things
+                     $("#assessment-date-question").removeClass("hidden");
+                  } else if (returnType == "T3") { //T3
+                     $("#death-date-question").removeClass("hidden");
+                     $("#distribution-date-question").removeClass("hidden");
+                  }
+                  calculateDeadline();
+               });
+
+               $document.on("change", "input", function () {calculateDeadline();});
+
+               function calculateDeadline() {
+                  var deathDate = $("#date-death").val(),
+                     deathDateParts = deathDate.split('-').map( Number ),
+                     returnType = $("#return-type").find('option:selected').val(),
+                     runBusiness = $('#run-business:checked').length,
+                     sixthMonth = 0;
+                  var assessDate = new Date($("#assessment-date").val());
+                  var ninetyDaysLater = assessDate.addDays(91);
+                  if (returnType == "70(1)" || returnType == "150(4)" || returnType == "104(23)(d)") { //T1
+                     if (deathDateParts[1] == 11) { 
+                        sixthMonth = 5;
+                     } else if (deathDateParts[1] == 12) {
+                        sixthMonth = 6;
+                     }
+                     if (runBusiness > 0) { //june 15 stuff - business
+                        if (deathDateParts[1] == 12 && deathDateParts[2] > 15) { //Dec 16 or later
+                           $(".due-date").text(getMonthNames(sixthMonth) + " " + deathDateParts[2] + ", " + (parseInt(deathDateParts[0]) + 1));
+                        } else {
+                           $(".due-date").text("June 15, " + (parseInt(deathDateParts[0]) + 1));
+                        }
+                     } else { //april 30th stuff - not business
+                        if (deathDateParts[1] > 10) { // November or December
+                           $(".due-date").text(getMonthNames(sixthMonth) + " " + deathDateParts[2] + ", " + (parseInt(deathDateParts[0]) + 1));
+                        } else {
+                           $(".due-date").text("April 30, " + (parseInt(deathDateParts[0]) + 1));
+                        }
+                     }
+                     if (deathDateParts[0] + 1 == 1) {
+                        if (document.documentElement.lang == "fr") {
+                           $(".due-date").text("(répondez aux questions ci-dessus)");
+                        } else {
+                           $(".due-date").text("(answer questions above)");
+                        }
+                     }
+                  } else if (returnType == "70(2)") { //rights or things
+                     if (Number.isNaN(assessDate.getUTCFullYear())) {
+                        if (document.documentElement.lang == "fr") {
+                           $(".due-date").text("(répondez aux questions ci-dessus)");
+                        } else {
+                           $(".due-date").text("(answer questions above)");
+                        }
+                     } else {
+                        $(".due-date").text(getMonthNames(ninetyDaysLater.getUTCMonth() + 1) + " " + ninetyDaysLater.getUTCDate() + ", " + ninetyDaysLater.getUTCFullYear());
+                     }
+                  } else if (returnType == "T3") { //T3
+                     $(".due-date").text("Not sure how T3 works - pending updates!");
+                  }
+               }
+
+               function getMonthNames(iMonth) {
+                  iMonth = zeroIfEmpty(iMonth);
+                  if (document.documentElement.lang == "fr") {
+                     var monthNames = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+                  } else {
+                     var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                  }
+                  return monthNames[iMonth - 1];
+               }
+
+               /* code from https://stackoverflow.com/questions/563406/add-days-to-javascript-date
+               */
+               Date.prototype.addDays = function(days) {
+                  var date = new Date(this.valueOf());
+                  date.setDate(date.getDate() + days);
+                  return date;
+               }
+               /**
+                * zeroIfEmpty()
+                * return 0 if the number cannot be parsed into a float; does not account * for letter values.
+                */
+               function zeroIfEmpty(fieldVal) {
+                  if (fieldVal != null && fieldVal != "") {
+                     return parseFloat(fieldVal);
+                  } else {
+                     return 0;
+                  }
+               }
+
             })( jQuery, document, wb );
+         
          </script>
       </body>
    </html>
