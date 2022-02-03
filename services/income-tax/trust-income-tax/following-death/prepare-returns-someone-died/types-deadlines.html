@@ -91,23 +91,26 @@
                </ul>
 
                <section class="">
-                  <h2>Find out your filing due date</h2>
-
+                  <!-- <h2>Find out your filing due date</h2> -->
                   <div class="wb-frmvld">
                      <form method="get" class="panel panel-default mrgn-bttm-lg"> <!--id="cews-cal"-->
                         <fieldset class="">
-                           <legend class="panel-heading mrgn-bttm-0">Type of return</legend>
+                           <legend class="panel-heading mrgn-bttm-0">Find out your filing deadline</legend>
                            <div class="panel-body">
                               <div class="form-group">
                                  <!-- <legend><span class="wb-inv">Step 1: </span>Claim period</legend> -->
                                  <label for="return-type" class="control-label required"><span class="field-name">Select the type of return you are going to file</span> <strong class="required">(required)</strong></label>
                                  <select required id="return-type" class="form-control input-lg">
                                     <!-- <option value=""> Select a type of return</option> -->
-                                    <option value="70(1)">Final personal income tax return</option>
-                                    <option value="70(2)">Optional return: rights or things</option>
-                                    <option value="150(4)">Optional return: partner or proprietor</option>
-                                    <option value="104(23)(d)">Optional return: graduated rate estate</option>
-                                    <option value="T3">T3 trust income tax return</option>
+                                    <optgroup label="Shared T1 due date">
+                                       <option value="70(1)">Final personal income tax return</option>
+                                       <option value="150(4)">Optional return: partner or proprietor</option>
+                                       <option value="104(23)(d)">Optional return: graduated rate estate</option>
+                                    </optgroup>
+                                    <optgroup label="Other due dates">
+                                       <option value="70(2)">Optional return: rights or things</option>
+                                       <option value="T3">T3 trust income tax return</option>
+                                    </optgroup>
                                  </select>
                               </div>
                               <div id="death-date-question" class="form-group">
@@ -147,7 +150,7 @@
                   <li><span class="far fa-calendar-alt fa-li text-muted"></span> <strong>6 months following the death</strong> on the same calendar day as the death (the date of death falls during November or December)</li>
                </ul>
                <details>
-                  <summary>Extended deadline if running a business or self-employed</summary>
+                  <summary>Extended deadline if self-employed (running a business)</summary>
                   <p>If the person who died or their spouse or common-law partner was running a business on the date of death, your deadline for the final return is extended to the later of:</p>
                   <ul class="fa-ul small">
                      <li><span class="far fa-calendar-alt fa-li text-muted"></span> <strong>June 15 of the year following the death</strong> (the date of death falls between January 1 and December 16)</li>
@@ -162,11 +165,11 @@
                <dl class="dl-horizontal">
                   <dt>Return for rights or things</dt>
                   <dd>If income was received after death that, had the person not died, would have been included in their usual personal income tax return.</dd>
-                  <dd><strong>Deadline:</strong> 90 days after the mailing date of the Notice of Assessment for the final return.</dd>
+                  <dd><strong>Deadline:</strong> 90 days after the mailing date of the Notice of Assessment or Reassessment for the final return.</dd>
                   <dt>Return for a partner or proprietor</dt>
                   <dd>If the person who died was a sole proprietor or partner of an unincorporated business with a fiscal year end that is <strong>not</strong> December 31st, and income was received from the business between the fiscal year end and the date of death.</dd>
                   <dd><strong>Deadline:</strong> You must file this by the same deadlines as the final personal income tax return, generally April 30.</dd>
-                  <dt>Return for rights or things</dt>
+                  <dt>Return for a Graduated Rate Estate (GRE)</dt>
                   <dd>If income was received in the year of death from a Graduated Rate Estate (GRE), such as the estate of another person who died, generally on a T3 slip.</dd>
                   <dd><strong>Deadline:</strong> You must file this by the same deadlines as the final personal income tax return, generally April 30.</dd>
                </dl>
