@@ -189,8 +189,8 @@ window.addEventListener("load", function(event) {
  let changeEvent = new Event('change');
    document.querySelector("#return-type").dispatchEvent(changeEvent);
 }  );  
- function songClick() {
-    $("#own-business, .date-inputs, #noa-question, #results").addClass("hidden");
+ function expandDates() {
+    $("#own-business, .date-inputs, #noa-question, #results, #return-btn").addClass("hidden");
      $('#run-business').prop('checked', false);
      $(".date-inputs input").val("");
      var selectText = $(this).find("option:selected").text();
@@ -212,7 +212,7 @@ window.addEventListener("load", function(event) {
      
    //Script for return select //
  
-   $("#return-type").on("change", songClick);
+   $("#return-type").on("change", expandDates);
    //Script for Notice of assessment question //
    $('input:radio[name="noa"]').change(function () {
      $("#noa-input-field input").val("");
