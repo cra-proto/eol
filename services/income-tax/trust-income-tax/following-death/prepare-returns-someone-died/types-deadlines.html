@@ -81,101 +81,62 @@
             <section class="gc-nav-section experimental">
                <h1 property="name" id="wb-cont">Types and deadlines</h1>
                <p>In addition to the final T1 personal income tax return, which everyone needs to file, you might be eligible to file optional returns for a better tax rate. If the estate received income after the death, you might also need to file a T3 Trust income tax return.</p>
+               <h2 class="h3 mrgn-tp-sm">On this page</h2>
+               <ul>
+                  <li><a href="#h-1">Answer questions to find out your due date</a></li>
+                  <li><a href="#h-2">Types of returns for someone who died</a>
+                     <ul>
+                        <li><a href="#h-2a">Final personal income tax return</a></li>
+                        <li><a href="#h-2b">Optional returns for someone who died</a></li>
+                        <li><a href="#h-2c">T3 trust income tax return</a></li>
+                        <li><a href="#h-2d">Returns for residents of Quebec</a></li>
+                     </ul>
+                  </li>
+                  <li><a href="#-3">Penalties if you file late</a></li>
+               </ul>
 
-               <div class="panel panel-default"> 
-                 <h2 class="h4 mrgn-lft-md mrgn-bttm-0 mrgn-tp-md">Find out the due date for a tax return for someone who died</h3>
-                  <div id="date-picker-form" class="hidden panel-body">
-                     <div class="wb-fieldflow" data-wb-fieldflow='{"inline":true, "btnStyle":"success", "defaultselectedlabel":"Select the return you are planning to file", "unhideelm": "#date-picker-form"}'>
-                        <p>Select the return you are planning to file</p>
-                        <ul>
-                           <option>Select the type of return</option>
-                           <li>Common returns
-                              <ul>
-                                 <li  data-wb-fieldflow='[
-                                             {"action": "query", "name":"return", "value":"70(1)"},
-                                             {"action": "redir", "url": "../due-dates-returns.html"}
-                                          ]'>Final T1 return – 70(1)</li>
-                                 <li  data-wb-fieldflow='[
-                                             {"action": "query", "name":"return", "value":"T3reg"},
-                                             {"action": "redir", "url": "../due-dates-returns.html"}
-                                          ]'>Estate trust return – T3</li>
-                              </ul>
-                           </li>
-                           <li>Optional returns
-                              <ul>
-                                 <li  data-wb-fieldflow='[
-                                       {"action": "query", "name":"return", "value":"70(2)"},
-                                       {"action": "redir", "url": "../due-dates-returns.html"}
-                                    ]'>Return for rights or things – 70(2) </li>
-                                 <li  data-wb-fieldflow='[
-                                       {"action": "query", "name":"return", "value":"104(23)(d)"},
-                                       {"action": "redir", "url": "../due-dates-returns.html"}
-                                    ]'>Income from a graduated rate estate – 104(23)(d)</li>
-                                 <li  data-wb-fieldflow='[
-                                       {"action": "query", "name":"return", "value":"150(4)"},
-                                       {"action": "redir", "url": "../due-dates-returns.html"}
-                                    ]'>Return for a partner or proprietor – 150(4) </li>
-                              </ul>
-                           </li>
-                        </ul>
-                     </div>
+               <h2 id="h-1">Answer questions to find out your due date</h2>
+               <div id="date-picker-form" class="hidden">
+                  <div class="wb-fieldflow" data-wb-fieldflow='{"inline":true, "btnStyle":"success", "defaultselectedlabel":"Select the return you are planning to file", "unhideelm": "#date-picker-form"}'>
+                     <p>Select the return you are planning to file</p>
+                     <ul>
+                        <option>Select the type of return</option>
+                        <li>Common returns
+                           <ul>
+                              <li  data-wb-fieldflow='[
+                                          {"action": "query", "name":"return", "value":"70(1)"},
+                                          {"action": "redir", "url": "../due-dates-returns.html"}
+                                       ]'>Final T1 return – 70(1)</li>
+                              <li  data-wb-fieldflow='[
+                                          {"action": "query", "name":"return", "value":"T3reg"},
+                                          {"action": "redir", "url": "../due-dates-returns.html"}
+                                       ]'>Estate trust return – T3</li>
+                           </ul>
+                        </li>
+                        <li>Optional returns
+                           <ul>
+                              <li  data-wb-fieldflow='[
+                                    {"action": "query", "name":"return", "value":"70(2)"},
+                                    {"action": "redir", "url": "../due-dates-returns.html"}
+                                 ]'>Return for rights or things – 70(2) </li>
+                              <li  data-wb-fieldflow='[
+                                    {"action": "query", "name":"return", "value":"104(23)(d)"},
+                                    {"action": "redir", "url": "../due-dates-returns.html"}
+                                 ]'>Income from a graduated rate estate – 104(23)(d)</li>
+                              <li  data-wb-fieldflow='[
+                                    {"action": "query", "name":"return", "value":"150(4)"},
+                                    {"action": "redir", "url": "../due-dates-returns.html"}
+                                 ]'>Return for a partner or proprietor – 150(4) </li>
+                           </ul>
+                        </li>
+                     </ul>
                   </div>
                </div>
 
-               <h2 class="h3 mrgn-tp-sm">On this page</h2>
-               <ul>
-                  <li><a href="#h-1">Final personal income tax return</a></li>
-                  <li><a href="#h-2">Optional returns for someone who died</a></li>
-                  <li><a href="#h-3">T3 trust income tax return</a></li>
-                  <li><a href="#h-4">Returns for residents of Quebec</a></li>
-               </ul>
+               <h2 id="h-2">Types of returns for someone who died</h2>
+               <p>In addition to the income tax return, you might need to file a T3 or returns for the province of Quebec.</p>
 
-               <!-- <section class="">
-                  <div class="wb-frmvld">
-                     <form method="get" class="panel panel-default mrgn-bttm-lg">
-                        <fieldset class="">
-                           <legend class="panel-heading mrgn-bttm-0">Find out your filing deadline</legend>
-                           <div class="panel-body">
-                              <div class="form-group">
-                                 <label for="return-type" class="control-label required"><span class="field-name">Select the type of return you are going to file</span> <strong class="required">(required)</strong></label>
-                                 <select required id="return-type" class="form-control input-lg">
-                                    <optgroup label="Shared T1 due date">
-                                       <option value="70(1)">Final personal income tax return</option>
-                                       <option value="150(4)">Optional return: partner or proprietor</option>
-                                       <option value="104(23)(d)">Optional return: graduated rate estate</option>
-                                    </optgroup>
-                                    <optgroup label="Other due dates">
-                                       <option value="70(2)">Optional return: rights or things</option>
-                                       <option value="T3">T3 trust income tax return</option>
-                                    </optgroup>
-                                 </select>
-                              </div>
-                              <div id="death-date-question" class="form-group">
-                                 <label for="date-death">Date of death<span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
-                                 <div class="">
-                                   <input class="form-control" type="date" id="date-death" name="date-death"/>
-                                 </div>
-                              </div>
-                              <div id="business-question" class="checkbox">
-                                 <label for="run-business">
-                                   <input id="run-business" type="checkbox" value="">Deceased or deceased's spouse or common-law partner ran a business on the date of death</label>
-                              </div>
-                              <div id="assessment-date-question" class="form-group hidden">
-                                 <label for="assessment-death">Date the Notice of Assessment or Reassessment was issued<span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
-                                 <div class="">
-                                   <input class="form-control" type="date" id="assessment-date" name="assessment-date"/>
-                                 </div>
-                              </div>
-                              <div class="well">
-                                 <h3 class="mrgn-tp-0">Deadline for your selection</h3>
-                                 <p>Based on the information you entered, the <strong><span class="return-name">Final personal income tax return</span></strong> must be filed by <span class="due-date h4 mrgn-tp-0">(answer questions above)</span></p>
-                              </div>
-                           </div>
-                        </fieldset>
-                     </form>
-                  </div> -->
-
-               <h2 id="h-1">Final personal income tax return</h2>
+               <h3 id="h-2a">Final personal income tax return</h2>
                <p><strong>Who should file:</strong> Generally, everyone must file a final personal tax return. This is similar to your yearly income tax return but has some differences depending on the assets of the person who died.</p>
                <p><strong>Deadline</strong>:</strong></p>
                <p>The later of:</p>
@@ -198,7 +159,7 @@
                   <p>In the case that you make this election, you will be able to </p>
                </details>
              
-               <h2 id="h-2">Optional returns for someone who died</h2>
+               <h3 id="h-2b">Optional returns for someone who died</h2>
                <p><strong>Who should file:</strong> Although you are not required to file any of the optional returns, you may reduce or eliminate tax that you would otherwise have to pay for the person who died if you do so.</p>
                <p>You may be eligible for any of the 3 optional returns in the following circumstances :</p>
                <dl class="dl-horizontal">
@@ -278,19 +239,20 @@
                   <dd><strong>Deadline:</strong> You must file this by the same deadlines as the final personal income tax return, generally April 30.</dd>
                </dl>
 
-               <h2 id="h-3">T3 trust income tax return</h2>
+               <h3 id="h-2c">T3 trust income tax return</h2>
                <p><strong>Who should file:</strong> You might have to file a T3 trust income tax return if the estate of the person who died receives income after the date of death. Should the estate remain open for multiple years, you might need to file a T3 for more than one tax year.</p>
                <p><strong>Deadline</strong>:</strong></p>
                <ul class="fa-ul small">
                   <li><span class="far fa-calendar-alt fa-li text-muted"></span> <strong>90 days after the end of the trust's tax year</strong> - the end of the trust's tax year is generally the date the estate was distributed, or 1 day following the annual of the date of death, whichever comes first.</li>
                </ul>
 
-               <h2 id="h-4">Returns for residents of Quebec</h2>
+               <h3 id="h-2d">Returns for residents of Quebec</h2>
                <p><strong>Who should file:</strong> You might have to file additional tax returns to the province of Quebec if the person who died was resident of Quebec during the year of the death.</p>
                <p><a href="">Refer to Revenue Quebec for provincial filing requirements</a></p>
 
-               <!-- <h2 id="h-5">Penalties if you file a return late</h3>
-               <p>If you file a return late <mark>(confirm that this applies to the T3 and optional returns as well or if they have different penalties)</mark>and there is a balance owing,&nbsp;the CRA&nbsp;will charge a late-filing penalty. The <strong>penalty is 5%</strong> of any balance owing, <strong>plus 1%</strong> of the balance owing for each full month that the return is late, to a maximum of 12 months. The late-filing penalty may be higher if&nbsp;the CRA&nbsp;charged a late-filing penalty on a return of the deceased for any of the three previous years. The CRA will also charge you interest on both the balance owing and any penalty.</p> -->
+               <h2 id="h-3">Penalties if you file a return late</h3>
+               <p>If you file a return late and there is a balance owing,&nbsp;the CRA&nbsp;will charge a late-filing penalty.</p>
+               <p>The <strong>penalty is 5%</strong> of any balance owing, <strong>plus 1%</strong> of the balance owing for each full month that the return is late, to a maximum of 12 months. The late-filing penalty may be higher if&nbsp;the CRA&nbsp;charged a late-filing penalty on a return of the deceased for any of the three previous years. The CRA will also charge you interest on both the balance owing and any penalty.</p>
 
               <nav role="navigation" class="mrgn-bttm-lg mrgn-tp-lg">
                   <h3 class="wb-inv">Document navigation</h3>
