@@ -26,6 +26,11 @@
             }));
          </script>
 	 <link rel="stylesheet" href="https://test.canada.ca/covid-19-guidance/proto/business-subsidy/rent-subsidy/and-or.css"/>
+	      <style>
+.collapse-col {
+  visibility: collapse;
+}
+</style>
       </head>
       <body vocab="http://schema.org/" typeof="WebPage">
          <div id="def-top">
@@ -69,7 +74,7 @@
 
           <p>When you select a type of asset or income, more information about it may be available below the checklist.</p>
   <p id="start-question" class="wb-inv">Start of question</p>
-  <div class="wb-frmvld" id="asset-builder">
+  <div class="wb-frmvld mrgn-bttm-lg" id="asset-builder">
     <form>
       <div class="wb-fieldflow" data-wb-fieldflow='{"renderas": "checkbox", "noForm": true, "gcChckbxrdio":true, "isoptional": true, "reset": {"action": "addClass", "source": "#launch-btn", "class": "hidden", "live": true}, "unhideelm": "#asset-builder"}'>
         <div class="wb-fieldflow-header">
@@ -227,7 +232,7 @@
       <li>payment of vacation leave earned but not taken</li>
     </ul>
   </div>
-  <p id="launch-btn" class="mrgn-tp-lg hidden"><a href="#overlay" class="wb-lbx btn btn-primary">Show asset list</a></p>
+  <p id="launch-btn" class="mrgn-bttm-lg hidden"><a href="#overlay" class="wb-lbx btn btn-primary">Show asset and income list</a></p>
   <section id="overlay" class="mfp-hide modal-dialog modal-content overlay-def wb-popup-mid">
     <header class="modal-header">
       <h2 class="modal-title">Asset list</h2>
