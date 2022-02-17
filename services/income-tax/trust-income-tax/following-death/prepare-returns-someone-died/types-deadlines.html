@@ -72,8 +72,8 @@
                      <li class="active"><a aria-current="page">Types and deadlines</a></li>
                      <li><a href="report-assets.html">Report income</a></li>
                      <li><a href="credits-deductions.html">Claim credits and deductions</a></li>
-                     <li><a href="how-file.html">File the returns</a></li>
-                     <li><a href="after.html">After you file</a></li>
+                     <li><a href="file-the-returns.html">File the returns</a></li>
+                     <li><a href="after-you-file.html">After you file</a></li>
                   </ul>
                   <div class="hidden-sm hidden-xs" data-ajax-replace="index.html #related-menu>"> </div>
                </nav>
@@ -158,7 +158,7 @@
                   <p>If you have a loss in your T3 Trust Income Tax and Information Return, you might be eligible to elect under 164(6) of the Income Tax Act to carry that loss back to your personal income tax return.</p>
                   <p>In the case that you make this election, you will be able to </p>
                </details>
-             
+
                <h3 id="h-2b">Optional returns for someone who died</h2>
                <p><strong>Who should file:</strong> Although you are not required to file any of the optional returns, you may reduce or eliminate tax that you would otherwise have to pay for the person who died if you do so.</p>
                <p><a href="report-assets.html#h-3">Find out if you have eligible income to report on the optional returns</a>.</p>
@@ -254,7 +254,7 @@
                   if (returnType == "70(1)" || returnType == "150(4)" || returnType == "104(23)(d)") { //T1
                      $("#death-date-question").removeClass("hidden");
                      $("#business-question").removeClass("hidden");
-                     
+
                   } else if (returnType == "70(2)") { //rights or things
                      $("#assessment-date-question").removeClass("hidden");
                   } else if (returnType == "T3") { //T3
@@ -275,7 +275,7 @@
                   var assessDate = new Date($("#assessment-date").val());
                   var ninetyDaysLater = assessDate.addDays(91);
                   if (returnType == "70(1)" || returnType == "150(4)" || returnType == "104(23)(d)") { //T1
-                     if (deathDateParts[1] == 11) { 
+                     if (deathDateParts[1] == 11) {
                         sixthMonth = 5;
                      } else if (deathDateParts[1] == 12) {
                         sixthMonth = 6;
@@ -345,7 +345,7 @@
                }
 
             })( jQuery, document, wb );
-         
+
          </script>
       </body>
    </html>
