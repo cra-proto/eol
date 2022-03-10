@@ -78,7 +78,7 @@
                       <li><a href="file-returns.html">File the returns</a></li>
                       <li><a href="types-deadlines.html">Filing deadlines</a>
                         <ul class="gc-navseq noline">
-                          <li class="active"><a aria-current="page">Find out your deadlines to file tax returns for a deceased</a></li>
+                          <li class="active"><a aria-current="page">Find out your deadlines to file</a></li>
                         </ul>
                       </li>
                       <li><a href="after-you-file.html">After you file</a></li>
@@ -100,7 +100,7 @@
                         <option value="70(1)">Final T1 return – 70(1)</option>
                         <option value="T3reg">Estate trust return – T3</option>
                         </optgroup>
-                        <optgroup label="Optional returns">
+                        <optgroup label="Optional T1 returns">
                         <option value="70(2)">Return for rights or things – 70(2) </option>
                         <option value="104(23)(d)">Income from a graduated rate estate – 104(23)(d)</option>
                         <option value="150(4)">Return for a partner or proprietor – 150(4) </option>
@@ -133,12 +133,33 @@
                         <label for="noa-input" class="gc-font-2019">Date of the notice of assessment, or reassessment for the final return<span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
                         <input type="date" id="noa-input" class="form-control date-input-val"/>
                       </div>
+                     
+                      <div id="tye-question" class="mrgn-tp-md hidden">
+                        <fieldset class="gc-chckbxrdio">
+                          <legend class="mrgn-bttm-0"><span class="gc-font-2019">Do you know the date of the tax year-end or trust wind-up?</span></legend>
+                          <ul class="list-unstyled lst-spcd-2">
+                            <li class="radio">
+                              <input type="radio" name="tye" id="tye-yes" value="Yes">
+                              <label for="tye-yes">Yes</label>
+                            </li>
+                            <li class="radio">
+                              <input type="radio" name="tye" id="tye-no" value="No">
+                              <label for="tye-no">No</label>
+                            </li>
+                          </ul>
+                        </fieldset>
+                      </div>
+                     <div id="tye-no-answer" class="hidden">
+                         <p>For the first 3 years after the death, the end of the trust's tax year is generally the date the estate was distributed, or the day following the anniversary of the date of death, whichever comes first.</p>
+                       
+                       <p id="ye-rules" class="mrgn-tp-0"><a><a href="#" target="_blank">Rules and exceptions for tax year end <span class="nowrap">date<span class="wb-inv"> open in new window</span><span class="far fa-window-restore mrgn-lft-sm"></span></span></a></p>
+                       </div>
                       <div class="form-group mrgn-tp-md date-inputs hidden" id="t3reg-input-field">
                         <label for="t3reg-input" class="gc-font-2019" id="ye-label">Date of the tax year-end or trust wind-up <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
-                        <p class="small text-muted" id="ye-note"><strong>Note:</strong> for the first 3 years after the death, the end of the trust's tax year is generally the date the estate was distributed, or the day following the anniversary of the date of death, whichever comes first..</p>
+                      
                         
-                        <input type="date" id="t3reg-input" class="form-control date-input-val" min="2015-01-01" aria-labelledby="ye-label ye-note"/>
-                        <p id="ye-rules" class="mrgn-tp-0"><a><a href="#" target="_blank">link to rules or exceptions for tax year end <span class="nowrap">date<span class="wb-inv"> open in new window</span><span class="far fa-window-restore mrgn-lft-sm"></span></span></a></p>
+                        <input type="date" id="t3reg-input" class="form-control date-input-val" min="2015-01-01"/>
+                        
                       </div>
                       <button class="btn btn-primary btn-lg mrgn-tp-lg hidden"  data-wb-doaction='{"action": "removeClass", "source": "#results", "class": "hidden"}' type="submit" id="return-btn">Get the due date</button>
                     </form>
@@ -218,9 +239,10 @@ window.addEventListener("load", function(event) {
    document.querySelector("#return-type").dispatchEvent(changeEvent);
 }  );  
  function expandDates() {
-    $("#own-business, .date-inputs, #noa-question, #results, #return-btn").addClass("hidden");
+    $("#own-business, .date-inputs, #noa-question, #tye-question, #tye-no-answer, #results, #return-btn").addClass("hidden");
      $('#run-business').prop('checked', false);
-     $(".date-inputs input").val("");
+     $('.date-inputs input').val('');
+   $('input:radio[name="noa"], input:radio[name="tye"]').prop('checked', false);
      var selectText = $(this).find("option:selected").text();
      var returnText = $("#return-type-output").text(selectText);
      if ($(this).val() == "70(1)" || $(this).val() == "104(23)(d)" || $(this).val() == "150(4)") {
@@ -231,10 +253,12 @@ window.addEventListener("load", function(event) {
        $("#dod-input-field, #noa-question").removeClass("hidden");
        returnText;
      }
-     if ($(this).val() == "T3reg") {
-       $("#t3reg-input-field, #return-btn").removeClass("hidden");
+   if ($(this).val() == "T3reg") {
+       $("#tye-question").removeClass("hidden");
        returnText;
      }
+   
+    // if ($(this).val() == "T3reg") {$("#t3reg-input-field, #return-btn").removeClass("hidden");returnText;}
  }
      
      
@@ -252,6 +276,19 @@ window.addEventListener("load", function(event) {
        $("#return-btn").removeClass("hidden");
      }
    });
+      //Script for tax year-end question //
+   $('input:radio[name="tye"]').change(function () {
+     $("#t3reg-input-field input").val("");
+     if ($(this).val() == "Yes") {
+       $("#t3reg-input-field, #return-btn").removeClass("hidden");
+       $("#tye-no-answer").addClass("hidden");
+     }
+     if ($(this).val() == "No") {
+       $("#t3reg-input-field, #return-btn, #results").addClass("hidden");
+       $("#tye-no-answer").removeClass("hidden");
+     }
+   });
+     
    //Script to not allow the NOA date to be before the DOD
    $("#dod-input").focusout(function () {
      var dodDate = $(this).val();
