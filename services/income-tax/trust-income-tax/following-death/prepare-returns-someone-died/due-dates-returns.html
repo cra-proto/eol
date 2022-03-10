@@ -149,11 +149,7 @@
                           </ul>
                         </fieldset>
                       </div>
-                     <div id="tye-no-answer" class="hidden">
-                         <p>For the first 3 years after the death, the end of the trust's tax year is generally the date the estate was distributed, or the day following the anniversary of the date of death, whichever comes first.</p>
-                       
-                       <p id="ye-rules" class="mrgn-tp-0"><a><a href="#" target="_blank">Rules and exceptions for tax year end <span class="nowrap">date<span class="wb-inv"> open in new window</span><span class="far fa-window-restore mrgn-lft-sm"></span></span></a></p>
-                       </div>
+                     
                       <div class="form-group mrgn-tp-md date-inputs hidden" id="t3reg-input-field">
                         <label for="t3reg-input" class="gc-font-2019" id="ye-label">Date of the tax year-end or trust wind-up <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
                       
@@ -164,6 +160,13 @@
                       <button class="btn btn-primary btn-lg mrgn-tp-lg hidden"  data-wb-doaction='{"action": "removeClass", "source": "#results", "class": "hidden"}' type="submit" id="return-btn">Get the due date</button>
                     </form>
                     <div class="mrgn-tp-lg mrgn-bttm-lg" aria-live="polite">
+			 <div id="tye-no-answer" class="panel panel-default panel-body hidden">
+				 <h2 class="h3-mrgn-tp-0">You must decide on a tax year-end or wind-up date first</h2>
+			<p>The tax year-end of an estate trust return is any date that is chosen no more than one year after the date of death.</p>		 
+                         <p>For the first 3 years after the death, the end of the trust's tax year is generally the date the estate was distributed, or the day following the anniversary of the date of death, whichever comes first.</p>
+                       
+                       <p><a href="#" target="_blank">Rules and exceptions for tax year end <span class="nowrap">date<span class="wb-inv"> open in new window</span><span class="far fa-window-restore mrgn-lft-sm"></span></span></a></p>
+                       </div>   
                       <div id="results" class="panel panel-default panel-body hidden">
                         <h2 class="h3 mrgn-tp-0">Due date for the return</h2>
                         <p>The date you must submit the <strong id="return-type-output" class="nowrap">no return selected</strong> without penalty is: <strong id="date-output"></strong></p>
