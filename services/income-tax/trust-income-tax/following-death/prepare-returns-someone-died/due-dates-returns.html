@@ -151,8 +151,8 @@
                       </div>
                      
                       <div class="form-group mrgn-tp-md date-inputs hidden" id="t3reg-input-field">
-                        <label for="t3reg-input" class="gc-font-2019" id="ye-label">Date of the tax year-end or trust wind-up <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
-                     <div class="checkbox provisional gc-chckbxrdio hidden" id="own-business">
+                        <label for="t3reg-input" class="gc-font-2019" id="ye-label">Date of the fiscal or tax year-end, or trust wind-up <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
+                     <div class="checkbox provisional gc-chckbxrdio hidden" id="deemed-check">
                         <input id="deemed-ye" type="checkbox" />
                         <label for="deemed-ye">Trust was subject to a deemed year-end</label>
                       </div>
@@ -254,7 +254,7 @@ window.addEventListener("load", function(event) {
    document.querySelector("#return-type").dispatchEvent(changeEvent);
 }  );  
  function expandDates() {
-    $("#own-business, .date-inputs, #noa-question, #tye-question, #tye-no-answer, #results, #return-btn").addClass("hidden");
+    $("#own-business, #deemed-check, .date-inputs, #noa-question, #tye-question, #tye-no-answer, #results, #return-btn").addClass("hidden");
      $('#run-business').prop('checked', false);
      $('.date-inputs input').val('');
    $('input:radio[name="noa"], input:radio[name="tye"]').prop('checked', false);
@@ -295,11 +295,11 @@ window.addEventListener("load", function(event) {
    $('input:radio[name="tye"]').change(function () {
      $("#t3reg-input-field input").val("");
      if ($(this).val() == "Yes") {
-       $("#t3reg-input-field, #return-btn").removeClass("hidden");
+       $("#t3reg-input-field, #deemed-check, #return-btn").removeClass("hidden");
        $("#tye-no-answer").addClass("hidden");
      }
      if ($(this).val() == "No") {
-       $("#t3reg-input-field, #return-btn, #results").addClass("hidden");
+       $("#t3reg-input-field, #return-btn, #deemed-check, #results").addClass("hidden");
        $("#tye-no-answer").removeClass("hidden");
      }
    });
