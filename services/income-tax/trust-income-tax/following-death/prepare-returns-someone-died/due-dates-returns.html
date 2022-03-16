@@ -152,20 +152,32 @@
                      
                       <div class="form-group mrgn-tp-md date-inputs hidden" id="t3reg-input-field">
                         <label for="t3reg-input" class="gc-font-2019" id="ye-label">Date of the tax year-end or trust wind-up <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
-                      
+                     <div class="checkbox provisional gc-chckbxrdio hidden" id="own-business">
+                        <input id="deemed-ye" type="checkbox" />
+                        <label for="deemed-ye">Trust was subject to a deemed year-end</label>
+                      </div>
                         
                         <input type="date" id="t3reg-input" class="form-control date-input-val input-lg" min="2015-01-01"/>
                         
                       </div>
+			    
                       <button class="btn btn-primary btn-lg mrgn-tp-lg hidden"  data-wb-doaction='{"action": "removeClass", "source": "#results", "class": "hidden"}' type="submit" id="return-btn">Get the deadline for this return</button>
                     </form>
                     <div class="mrgn-tp-lg mrgn-bttm-lg" aria-live="polite">
 			 <div id="tye-no-answer" class="panel panel-default panel-body hidden">
-				 <h2 class="h3 mrgn-tp-0">You must decide on a tax year-end or wind-up date first</h2>
-			<p>The tax year-end of an estate trust return can be any date that is chosen no more than one year after the date of death.</p>		 
-                         <p>For the first 3 years after the death, the end of the trust's tax year is generally the date the estate was distributed, or the day following the anniversary of the date of death, whichever comes first.</p>
+				 <h2 class="h3 mrgn-tp-0">You must consider the fiscal year-end, tax year-end or wind-up date first</h2>
+				 <h3 class="h4">Fiscal year-end date</h3>	 
+			<p>The fiscal year-end date applies to a graduated rate estate trust, and has a chosen date that is no more than one year after the date of death.</p>	
+			<h3 class="h4">Tax year-end date</h3>	 
+				 <p>The tax year-end date applied to a testamentary trust and usually has a tax year-end date of December 31st.</p>
+				<h3 class="h4">Wind-up date</h3>	 
+				 <p>The wind-up date is either the date of the:</p>
+				 <ul><li>final distribution of the assets for a graduated rate estate, or</li>
+					 <li>testamentary trust's year-end date</li>
+				 </ul>
                        
-                       <p><a href="#" target="_blank">Rules and exceptions for tax year end <span class="nowrap">date<span class="wb-inv"> open in new window</span><span class="far fa-window-restore mrgn-lft-sm"></span></span></a></p>
+                       
+                     <!--  <p><a href="#" target="_blank">Rules and exceptions for tax year end <span class="nowrap">date<span class="wb-inv"> open in new window</span><span class="far fa-window-restore mrgn-lft-sm"></span></span></a></p>//-->
                        </div>   
                       <div id="results" class="panel panel-default panel-body hidden">
                         <h2 class="h3 mrgn-tp-0">Due date for the return</h2>
@@ -308,7 +320,9 @@ window.addEventListener("load", function(event) {
    var d2 = new Date(getDte[1].value);
    var d3 = new Date(getDte[2].value);
    var f = document.getElementById("run-business");
+var g = document.getElementById("deemed-ye");	 
    var year = d.getFullYear();
+var t3Year = d3.getFullYear();
    var month = d.getMonth();
    var day = d.getUTCDate();
    var yearz = [1];
@@ -323,6 +337,7 @@ window.addEventListener("load", function(event) {
    var c3 = new Date(year, month, day + dayz[0]);
    var c4 = d2.setDate(d2.getDate() + dayz[0]);
    var c5 = d3.setDate(d3.getDate() + dayz[0]);
+var c6 = new Date(t3Year, 11, 31 + dayz[0]);
    //calculate based on value in select//
 
    if (e.value == "70(1)" || e.value == "104(23)(d)") {
@@ -356,6 +371,9 @@ window.addEventListener("load", function(event) {
    if (e.value == "T3reg") {
      var newDt = new Date(c5)
    };
+ if ((e.value == "T3reg") && g.checked == true) {
+     var newDt = new Date(c6)
+   };	 
 
    //move results that are on a weekend and move to the following monday//  
    switch (newDt.getDay()) {
