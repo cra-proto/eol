@@ -5,8 +5,4 @@ alphaBanner.insertAdjacentHTML('afterbegin', '<section class="experimental alpha
 
 
 //Seperate script to null all canada.ca links to a 404 page
-$(document).ready(function(){
-  
-  $("a[href*='canada.ca']").attr("href", "https://cra-proto.github.io/eol/validation/404.html");
-  
-  });
+//$(document).ready(function(){$("a[href*='canada.ca']").attr("href", "https://cra-proto.github.io/eol/validation/404.html");});
