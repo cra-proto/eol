@@ -152,14 +152,15 @@
                      
                       <div class="form-group mrgn-tp-md date-inputs hidden" id="t3reg-input-field">
                         <label for="t3reg-input" class="gc-font-2019" id="ye-label">Date of the fiscal or tax year-end, or trust wind-up <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
-                     <div class="checkbox provisional gc-chckbxrdio hidden" id="deemed-check">
-                        <input id="deemed-ye" type="checkbox" />
-                        <label for="deemed-ye">Trust was subject to a deemed year-end</label>
-                      </div>
+                   
                         
                         <input type="date" id="t3reg-input" class="form-control date-input-val input-lg" min="2015-01-01"/>
                         
                       </div>
+			     <div class="checkbox provisional gc-chckbxrdio hidden" id="deemed-check">
+                        <input id="deemed-ye" type="checkbox" />
+                        <label for="deemed-ye">Trust was subject to a deemed year-end</label>
+                      </div> 
 			    
                       <button class="btn btn-primary btn-lg mrgn-tp-lg hidden"  data-wb-doaction='{"action": "removeClass", "source": "#results", "class": "hidden"}' type="submit" id="return-btn">Get the deadline for this return</button>
                     </form>
