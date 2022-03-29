@@ -177,90 +177,57 @@
       </div>
 
 
-        <!-- <section class="gc-srvinfo">
-          <h2 class="wb-inv">Services and information</h2>
-          <div class="wb-eqht row">
-            <section class="col-lg-4 col-md-6">
-              <h3><a href="what-following-death.html">What to do following a death</a></h3>
-              <p>Contact departments and agencies immediately following the death, apply for the death benefit, plan taxes and close out investments and accounts, file an estate return, get a clearance certificate</p>
+                  <div class="hidden-md hidden-lg" data-ajax-replace="index.html #related-menu>"> </div>
             </section>
-            <section class="col-lg-4 col-md-6">
-              <h3><a href="https://www.canada.ca/en/revenue-agency/services/tax/trust-administrators/t3-return.html">Trust Income Tax Return</a></h3>
-              <p>Determine whether a trust should file a Trust Income Tax Return (T3), and where and when to a file a T3.</p>
-            </section>
-            <section class="col-lg-4 col-md-6">
-              <h3><a href="https://www.canada.ca/en/revenue-agency/services/tax/trust-administrators/t3-slip.html">Trust Information returns – slips and summaries</a></h3>
-              <p>Determine when a trust has to complete and distribute T3 slips, filing methods for T3 slips, and due dates.</p>
-            </section>
-            <section class="col-lg-4 col-md-6">
-              <h3><a href="https://www.canada.ca/en/revenue-agency/services/tax/trust-administrators/t3-slip.html">Specified investment flow-through trust income and distribution tax</a></h3>
-              <p>Determine what a SIFT trust is, and get the tax calculation formula for SIFT trusts.</p>
-            </section>
-          </div>
-        </section> -->
-
-  <!-- <section class="gc-prtts">
-    <h2>Features</h2>
-    <div class="row wb-eqht">
-	<section class="col-lg-4 col-md-6 mrgn-bttm-md"><div class="figcaption hght-inhrt">
-        <figure class="well well-sm brdr-rds-0 hght-inhrt"><img class="img-responsive full-width" alt="" src="https://www.canada.ca/content/dam/cra-arc/camp-promo/features/doingyourtaxes.jpg">
-		<figcaption class="h3 mrgn-tp-sm"><a href="https://www.canada.ca//en/services/taxes/income-tax/personal-income-tax/doing-your-taxes.html" class="stretched-link">Taxes: One step at a time.</figcaption>
-          <p class="small">Get through tax season one step at the time.</a></figcaption>
-          <p class="small"></p>
-        </figure>
-        </div> </section>
-
-
-
-
-		<section class="col-lg-4 col-md-6 mrgn-bttm-md"><div class="figcaption hght-inhrt">
-        <figure class="well well-sm brdr-rds-0 hght-inhrt"><img class="img-responsive full-width" alt="" src="https://www.canada.ca/content/dam/cra-arc/camp-promo/features/getready-feature.jpg">
-		<figcaption class="h3 mrgn-tp-sm"><a href="https://www.canada.ca//en/revenue-agency/campaigns/taxes-get-ready.html" class="stretched-link">
-		It’s tax time; get the information you need to file your return.</figcaption>
-          <p class="small">Ask your tax preparer for an express notice of assessment.</a></figcaption>
-          <p class="small"></p>
-        </figure>
-        </div> </section>
-
-
-    <section class="col-lg-4 col-md-6 mrgn-bttm-md"><div class="figcaption hght-inhrt">
-        <figure class="well well-sm brdr-rds-0 hght-inhrt"><img class="img-responsive full-width" alt="" src="https://www.canada.ca/content/dam/cra-arc/camp-promo/features/express-noa-feature.jpg">
-          <figcaption class="h3 mrgn-tp-sm"><a href="https://www.canada.ca//en/revenue-agency/services/e-services/about-express-noa.html" class="stretched-link">You don't have to wait.</a></figcaption>
-          <p class="small">Ask your tax preparer for an express notice of assessment.</p>
-        </figure>
-        </div> </section>
-    </div>
-  </section> -->
-
-
-         <div id="def-preFooter"></div>
+            <div id="def-preFooter"></div>
+            <!-- Write closure template -->
+            <script type="text/javascript">
+               var defPreFooter = document.getElementById("def-preFooter");
+               defPreFooter.outerHTML = wet.builder.preFooter({
+               dateModified: "2020-07-30",
+               showPostContent: true,
+               showFeedback: true,
+               showShare: true
+               });
+            </script>
+         </main>
+         <div id="def-footer">
+         </div>
          <!-- Write closure template -->
          <script type="text/javascript">
-            var defPreFooter = document.getElementById("def-preFooter");
-            defPreFooter.outerHTML = wet.builder.preFooter({
-            dateModified: "2020-05-05",
-            showPostContent: true,
-            showFeedback: true,
-            showShare: true
+            var defFooter = document.getElementById("def-footer");
+            defFooter.outerHTML = wet.builder.footer({
+            showFooter: true,
+            showFeatures: true
             });
          </script>
-      </main>
-      <div id="def-footer">
-      </div>
-      <!-- Write closure template -->
-      <script type="text/javascript">
-         var defFooter = document.getElementById("def-footer");
-         defFooter.outerHTML = wet.builder.footer({
-         showFooter: true,
-         showFeatures: true
-         });
-      </script>
-      <!-- Write closure template -->
-      <script type="text/javascript">
-         document.write(wet.builder.refFooter({
-         }));
-      </script>
-        <!--<script src="https://test.canada.ca/covid-19-guidance/proto/js/alpha-banner.js"></script>//-->
+         <!-- Write closure template -->
+         <script type="text/javascript">
+            document.write(wet.builder.refFooter({
+            }));
+         </script>
+          <!--<script src="https://test.canada.ca/covid-19-guidance/proto/js/alpha-banner.js"></script>//-->
 	   <script src="https://cra-proto.github.io/eol/js/feedback-banner.js"></script>
-   </body>
-</html>
+         <script>
+            (function( $, document, wb ) {
+            "use strict";
+            $('.data-ajax').on( "wb-contentupdated", function( event, data ){
+            // "data.ajax-type" contains the insersion method [after, append, before, prepend, replace]
+            // "data.content" contains the
+            var $elm = $(event.currentTarget);
+            $elm
+            	.find( wb.allSelectors )
+            		.addClass( "wb-init" )
+            		.filter( ":not(#" + $elm.attr( "id" ) + " .wb-init .wb-init)" )
+            			.trigger( "timerpoke.wb" );
+            /*
+             * Since we are working with events we want to ensure that we are being
+             * passive about our control, so returning true allows for events to always
+             * continue
+             */
+            return true;
+            });
+            })( jQuery, document, wb );
+         </script>
+      </body>
+   </html>
