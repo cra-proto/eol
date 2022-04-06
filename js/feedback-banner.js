@@ -8,3 +8,5 @@ $(window).load(function(){$("a[href*='canada.ca']").attr("href", "https://cra-pr
 
 //Remove visited link design from 404 pages
 var visited_link_styling = "<style> a[href='https://cra-proto.github.io/eol-2/validation/404.html']:visited{ color:#284162; } </style>"; $('head').append( visited_link_styling );
+//Hiding menu and search from navigation
+$(".gcweb-menu>.container, #wb-srch").addClass("hidden");
