@@ -227,5 +227,69 @@
   <summary>No - there was no change in the value</summary>
   <p>If the value of the RRSP did not change between the date of death and distribution to a beneficiary, there are no further amounts to report.</p>
 </details>
+<h2>Related information</h2>
+<ul>
+  <li><a href="https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4177/death-rrsp-annuitant-a-prpp-member.html">RC4177 Death of an RRSP Annuitant</a></li>
+  <li><a href="https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/t4040.html">T4040 RRSPs and Other Registered Plans for Retirement</a></li>
 
+</ul>
+<nav role="navigation" class="mrgn-bttm-lg mrgn-tp-lg">
+  <h3 class="wb-inv">Document navigation</h3>
+  <ul class="pager">
+    <li class="next"><a href="after.html" rel="next">After you apply</a></li>
+  </ul>
+</nav>
+<div class="hidden-md hidden-lg" data-ajax-replace="index.html #related-menu>"> </div>
+</section>
+<div id="def-preFooter"></div>
+<!-- Write closure template --> 
+<script type="text/javascript">
+               var defPreFooter = document.getElementById("def-preFooter");
+               defPreFooter.outerHTML = wet.builder.preFooter({
+               dateModified: "2020-07-30",
+               showPostContent: true,
+               showFeedback: true,
+               showShare: true
+               });
+            </script>
+</main>
+<div id="def-footer"> </div>
+<!-- Write closure template --> 
+<script type="text/javascript">
+            var defFooter = document.getElementById("def-footer");
+            defFooter.outerHTML = wet.builder.footer({
+            showFooter: true,
+            showFeatures: true
+            });
+         </script> 
+<!-- Write closure template --> 
+<script type="text/javascript">
+            document.write(wet.builder.refFooter({
+            }));
+         </script> 
+<!--<script src="https://test.canada.ca/covid-19-guidance/proto/js/alpha-banner.js"></script>//--> 
+<script src="../../../../../../js/feedback-banner.js"></script> 
+<script>
+            (function( $, document, wb ) {
+            "use strict";
+            $('.data-ajax').on( "wb-contentupdated", function( event, data ){
+            // "data.ajax-type" contains the insersion method [after, append, before, prepend, replace]
+            // "data.content" contains the
+            var $elm = $(event.currentTarget);
+            $elm
+            	.find( wb.allSelectors )
+            		.addClass( "wb-init" )
+            		.filter( ":not(#" + $elm.attr( "id" ) + " .wb-init .wb-init)" )
+            			.trigger( "timerpoke.wb" );
+            /*
+             * Since we are working with events we want to ensure that we are being
+             * passive about our control, so returning true allows for events to always
+             * continue
+             */
+            return true;
+            });
+            })( jQuery, document, wb );
+         </script>
+</body>
+</html>
 
