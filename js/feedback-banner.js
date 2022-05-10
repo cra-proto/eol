@@ -10,6 +10,7 @@ $( ".gcweb-menu" ).on( "wb-ready.gcweb-menu", function( event ) {
 	$("a[href='https://www.canada.ca/en/services/finance/manage.html']").attr("href", "https://cra-proto.github.io/eol/services/finance/manage.html").addClass("prototype");
 	$(".gcweb-menu a:not(.prototype)").attr("href", "https://cra-proto.github.io/eol/validation/404.html");	
 	$("a[href*='canada.ca']").attr("href", "https://cra-proto.github.io/eol/validation/404.html");
+	$("a[href~='.gc.ca/']").attr("href", "https://cra-proto.github.io/eol/validation/404.html");
 });
 
 //Remove visited link design from 404 pages
