@@ -220,7 +220,7 @@
       //Script to show input fields required to fill out based on return type, and resets all input fields on change			 
 $( document ).on( "wb-ready.wb-data-fusion-query", "[data-fusion-query][name]", returnChange);
 $("#return-type").change(function() {
-	$(".date-inputs, .dline-field, #return-btn").addClass("hidden");
+	$(".date-inputs, .dline-field, #return-btn, #results").addClass("hidden");
 	 $('#run-business, #deemed-yre, input[name="tye"], input[name="noa"]').prop('checked', false);
      $('.date-inputs input').val('');
 	returnChange();
