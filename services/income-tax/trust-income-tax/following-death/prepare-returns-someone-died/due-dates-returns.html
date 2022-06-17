@@ -91,7 +91,7 @@
                 <h1 property="name" id="wb-cont">Find out your deadlines to file</h1>
               <p>Select the type of return for the deceased and provide some information to get the deadline for that return.</p>
     <p><strong>Note:</strong> If the deadline falls on a weekend, the date shown will be the following Monday.</p>
-    <form id="myform" action="">
+    <form id="ddform" action="">
       <label for="return-type" class="gc-font-2019">Select the return you are planning to file</label>
       <select class="form-control input-lg" id="return-type" name="select" data-fusion-query>
         <option>Select the type of return</option>
@@ -107,7 +107,7 @@
       </select>
       <div class="form-group mrgn-tp-md date-inputs  hidden" id="dod-input-field">
         <label for="dod-input" class="gc-font-2019">Date of death<span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
-        <input type="date" id="dod-input" class="form-control date-input-val input-lg" min="2015-01-01" />
+        <input type="date" id="dod-input" name="dodinput" class="form-control date-input-val input-lg" min="2015-01-01" required="required" />
       </div>
       <div class="checkbox provisional gc-chckbxrdio dline-field hidden" id="own-business">
         <input id="run-business" type="checkbox" />
@@ -130,7 +130,7 @@
       </div>
       <div class="form-group mrgn-tp-md date-inputs hidden" id="noa-input-field">
         <label for="noa-input" class="gc-font-2019">Date of the notice of assessment, or reassessment for the final return<span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
-        <input type="date" id="noa-input" class="form-control date-input-val input-lg"  min="2015-01-01"/>
+        <input type="date" id="noa-input" name="noainput" class="form-control date-input-val input-lg"  min="2015-01-01" required="required"/>
       </div>
       <div id="tye-question" class="mrgn-tp-md dline-field hidden">
         <fieldset class="gc-chckbxrdio">
@@ -149,9 +149,9 @@
       </div>
       <div class="form-group mrgn-tp-md date-inputs hidden" id="t3reg-input-field">
         <label for="t3reg-input" class="gc-font-2019" id="ye-label">Date of the estate's tax year-end or wind-up <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
-        <input type="date" id="t3reg-input" class="form-control date-input-val input-lg" min="2015-01-01"/>
+        <input type="date" id="t3reg-input" name="t3reginput" class="form-control date-input-val input-lg" min="2015-01-01" required="required"/>
       </div>
-      <button class="btn btn-primary btn-lg mrgn-tp-lg hidden"  data-wb-doaction='{"action": "removeClass", "source": "#results", "class": "hidden"}' type="submit" id="return-btn">Get the deadline for this return</button>
+      <input class="btn btn-primary hidden" type="submit" id="return-btn" value="Get the deadline for this return" />
     </form>
     <div class="mrgn-tp-lg mrgn-bttm-lg" aria-live="polite">
       <div id="tye-no-answer" class="panel panel-default panel-body hidden">
@@ -342,6 +342,12 @@ var longString = {
 }	
 	 document.getElementById("date-output").innerHTML = newDate.toLocaleString(langSet, longString);	
 });
+ $('#ddform').submit(function () {
+if ($(this).valid() == true)
+{$("#results").removeClass("hidden")};
+ return false;
+	
+});		 
 	</script>
       </body>
    </html>
