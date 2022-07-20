@@ -178,10 +178,14 @@
         <h2 class="h3 mrgn-tp-0">Due date for the return</h2>
         <p>The date you must submit the <strong id="return-type-output">no return selected</strong> without penalty is: <strong id="date-output"></strong></p>
         <p><strong>Note:</strong> If this date falls on a holiday, the due date is the next  business day. </p>
-        <details>
+        <details id="t1-dates">
           <summary>Public holidays for the current year</summary>
           <div data-ajax-replace="https://www.canada.ca/en/revenue-agency/services/tax/public-holidays.html#pblc-hlds"></div>
         </details>
+	   <details id="t3-dates" class="hidden">
+          <summary>Public holidays for the current year</summary>
+          <ul data-ajax-replace="https://www.canada.ca/en/revenue-agency/services/tax/public-holidays.html#pblc-hlds>:not(:nth-child(5)):not(:nth-child(7))"></ul>
+        </details>    
       </div>
     </div>
   </section>
@@ -220,7 +224,9 @@
       //Script to show input fields required to fill out based on return type, and resets all input fields on change			 
 $( document ).on( "wb-ready.wb-data-fusion-query", "[data-fusion-query][name]", returnChange);
 $("#return-type").change(function() {
-	$(".date-inputs, .dline-field, #return-btn, #results").addClass("hidden");
+	$(".date-inputs, .dline-field, #return-btn, #results, #t3-dates").addClass("hidden");
+	//Seperate dates required since T3 does not add an extra date for St JB and Civic holidays
+	$(".#t1-dates").addClass("hidden");
 	 $('#run-business, #deemed-yre, input[name="tye"], input[name="noa"]').prop('checked', false);
      $('.date-inputs input').val('');
 	returnChange();
@@ -241,7 +247,7 @@ var rtnTypeVal = $("#return-type").val();
        returnText;
      }
    if (rtnTypeVal =="T3reg") {
-       $("#tye-question").removeClass("hidden");
+       $("#tye-question, #t3-dates").removeClass("hidden");
        returnText;
      }
 }
