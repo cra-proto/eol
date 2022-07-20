@@ -225,8 +225,8 @@
 $( document ).on( "wb-ready.wb-data-fusion-query", "[data-fusion-query][name]", returnChange);
 $("#return-type").change(function() {
 	$(".date-inputs, .dline-field, #return-btn, #results, #t3-dates").addClass("hidden");
-	//Seperate dates required since T3 does not add an extra date for St JB and Civic holidays
-	$(".#t1-dates").addClass("hidden");
+	//Seperate date dropdowns required since T3 does not add an extra date for St JB and Civic holidays
+	$("#t1-dates").removeClass("hidden");
 	 $('#run-business, #deemed-yre, input[name="tye"], input[name="noa"]').prop('checked', false);
      $('.date-inputs input').val('');
 	returnChange();
